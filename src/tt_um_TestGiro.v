@@ -1,4 +1,4 @@
-module TestGiro(
+module tt_um_TestGiro(
     input clk10M, rst, 
 	input d1,d2,
 	output x1, x2
