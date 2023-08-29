@@ -1,5 +1,5 @@
 module tt_um_TestGiro(
-    input clk10M, rst, 
+    input clk, rst, 
 	input d1,d2,
 	output x1, x2
 );
@@ -12,7 +12,7 @@ DebounceCircuit #(.cuenta(80), .bits(7))
 DebounceCircuit_inst(
 	.a(d1) ,	// input  a_sig
 	.b(d2) ,	// input  b_sig
-	.clk(clk10M) ,	// input  clk_sig
+	.clk(clk) ,	// input  clk_sig
 	.rst(rst) ,	// input  rst_sig
 	.a_prev(a_prev) ,	// output  a_prev_sig
 	.b_prev(b_prev) 	// output  b_prev_sig
@@ -23,13 +23,13 @@ PulsosReg Pulsos_inst
 	.s1(a_prev) ,	// input  s1_sig
 	.s2(b_prev) ,	// input  s2_sig
 	.rst(~rst) ,	// input  rst_sig
-	.clk(clk10M) ,	// input  clk_sig
+	.clk(clk) ,	// input  clk_sig
 	.s(dAux) 	// output  s_sig
 );
 
 Giro2 Giro_inst
 (
-	.clk(clk10M) ,	// input  clk_sig
+	.clk(clk) ,	// input  clk_sig
 	.rst(~rst) ,	// input  rst_sig
 	.d1(a_prev) ,	// input  d1_sig
 	.d2(b_prev) ,	// input  d2_sig
