@@ -6,16 +6,11 @@ project:
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
   source_files:        
-   - DebounceCircuit.v
-   - Giro2.v
-   - mod_n_counter.v
-   - MullerC.v
-   - PulsosReg.v
-   - registro.v
-   - Rising.v
-   - Toggle.v
-   - tt_um_TestGiro.v
-  top_module:  "tt_um_TestGiro"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+   - BCD.v
+   - freq_div.v
+   - mod_u_counter.v
+   - tt_um_mod_u_cnt_BCD.v
+  top_module:  "tt_um_mod_u_cnt_BCD"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
@@ -42,24 +37,24 @@ documentation:
       After setting the reset (rst port) high, the system starts detecting the sequences. If the rotor turns clockwise, the x1 signal is raised and the x2 signal is kept low, while for counterclockwise, x1 is kept low and x2 is set high. In the case of undefined sequences, both signals are kept low.
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - clk10M
-    - rst
-    - d1
-    - d2
-    - none
-    - none
-    - none
-    - none
+    - data in bit 0
+    - data in bit 1
+    - data in bit 2
+    - data in bit 3
+    - enable
+    - syn_clear
+    - up
+    - load
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - x1
-    - x2
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
     - none
